@@ -49,7 +49,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4973734387028869240, guid: 28869f4b9bc33d54b9f0bb439e1c39a7, type: 3}
+  - {fileID: -7545873477151259802, guid: 28869f4b9bc33d54b9f0bb439e1c39a7, type: 3}
   - {fileID: 1767208302161597261, guid: 28869f4b9bc33d54b9f0bb439e1c39a7, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -110,9 +110,11 @@ SkinnedMeshRenderer:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 1.1641532e-10, y: 0.0077158883, z: -0.00067693833}
-    m_Extent: {x: 0.0010614971, y: 0.0016472125, z: 0.0013028705}
+    m_Center: {x: -0.00004997861, y: 0.0077503705, z: -0.00070267107}
+    m_Extent: {x: 0.0014661003, y: 0.0016262736, z: 0.0015459273}
   m_DirtyAABB: 0

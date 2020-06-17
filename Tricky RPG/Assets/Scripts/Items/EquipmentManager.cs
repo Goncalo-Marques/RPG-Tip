@@ -14,6 +14,9 @@ public class EquipmentManager : MonoBehaviour
     public Equipment[] defaultItems;
     public SkinnedMeshRenderer targetMesh;
 
+    public Transform swordTransform;
+    public Transform shieldTransform;
+
     private Equipment[] currentEquipment;
     SkinnedMeshRenderer[] currentMeshes;
 
@@ -38,20 +41,31 @@ public class EquipmentManager : MonoBehaviour
         int slotIndex = (int)newItem.equipSlot;
         Equipment oldItem = Unequip(slotIndex);
 
+
         if (onEquipmentChanged != null)
         {
-            onEquipmentChanged.Invoke(newItem, oldItem);
+            onEquipmentChanged.Invoke(newItem, null);
         }
 
         SetEquipmentBlendShapes(newItem, 100);
-
         currentEquipment[slotIndex] = newItem;
         SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
-        newMesh.transform.parent = targetMesh.transform;
-
-        newMesh.bones = targetMesh.bones;
-        newMesh.rootBone = targetMesh.rootBone;
         currentMeshes[slotIndex] = newMesh;
+
+        if (newItem != null && newItem.equipSlot == EquipmentSlot.Weapon)
+        {
+            newMesh.rootBone = swordTransform;
+        }
+        else if (newItem != null && newItem.equipSlot == EquipmentSlot.Shield)
+        {
+            newMesh.rootBone = shieldTransform;
+        }
+        else
+        {
+            newMesh.transform.parent = targetMesh.transform;
+            newMesh.bones = targetMesh.bones;
+            newMesh.rootBone = targetMesh.rootBone;
+        }
     }
 
     public Equipment Unequip(int slotIndex)

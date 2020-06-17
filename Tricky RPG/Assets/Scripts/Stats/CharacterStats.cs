@@ -3,14 +3,14 @@
 public class CharacterStats : MonoBehaviour
 {
     public int maxHealth = 100;
-    public int currentHealth { get; private set; }
+    public int CurrentHealth { get; private set; }
 
     public Stat damage;
     public Stat armor;
 
     private void Awake()
     {
-        currentHealth = maxHealth;
+        CurrentHealth = maxHealth;
     }
 
     private void Update()
@@ -26,9 +26,9 @@ public class CharacterStats : MonoBehaviour
         damage -= armor.GetValue();
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
-        currentHealth -= damage;
+        CurrentHealth -= damage;
 
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             Die();
         }
