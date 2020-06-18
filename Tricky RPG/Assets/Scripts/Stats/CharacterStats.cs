@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class CharacterStats : MonoBehaviour
 
     public Stat damage;
     public Stat armor;
+
+    public Action<int, int> OnHealthChanged;
 
     private void Awake()
     {
@@ -27,6 +30,11 @@ public class CharacterStats : MonoBehaviour
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
         CurrentHealth -= damage;
+
+        if (OnHealthChanged != null)
+        {
+            OnHealthChanged(maxHealth, CurrentHealth);
+        }
 
         if (CurrentHealth <= 0)
         {
